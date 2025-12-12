@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ genre }} Data</title>
+    <style>
+        form {
+            margin-top: 30px;
+            margin-bottom: 50px;
+        }
+        .visualization-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        iframe {
+            border: none;
+            width: 80%;
+            height: 600px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Genre: {{ genre }}</h1>
+
+    <!-- Visualization -->
+    <div class="visualization-container">
+        <iframe name="visualization-frame" src="/fig/danceability-prediction/{{ genre }}"></iframe>
+    </div>
+
+    <!-- Mood Selection -->
+    <h2>Select a Mood for {{ genre }}</h2>
+    <form action="/submit_mood" method="post">
+        <select name="mood" id="mood">
+            <option value="Happy">Happy</option>
+            <option value="Relaxing">Relaxing</option>
+            <option value="Workout">Workout</option>
+            <option value="Party">Party</option>
+        </select>
+        <button type="submit">Find Songs</button>
+    </form>
+</body>
+</html>
+

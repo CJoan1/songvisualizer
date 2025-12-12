@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ mood }} Mood</title>
+    <style>
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            margin: auto;
+            text-align: center;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Songs for Selected Mood -->
+    {% if mood and songs %}
+        <h2>Songs for {{ genre }} - Mood: {{ mood }}</h2>
+        <table>
+            <tr>
+                <th>Track Name</th>
+                <th>Artist</th>
+                <th>Danceability</th>
+                <th>Energy</th>
+            </tr>
+            {% for song in songs %}
+            <tr>
+                <td>{{ song.track_name }}</td>
+                <td>{{ song.artists }}</td>
+                <td>{{ song.danceability }}</td>
+                <td>{{ song.energy }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% elif mood %}
+        <h3>No songs found for the selected mood.</h3>
+    {% endif %}
+</body>
+</html>

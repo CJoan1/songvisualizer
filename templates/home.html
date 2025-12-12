@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Song Visualizer</title>
+    <style>
+        .visualization-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        iframe {
+            border: none;
+            width: 80%;
+            height: 600px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Song Visualizer</h1>
+
+
+    <!-- Genre Selection Form -->
+    <form action="/submit_genre" method="post">
+        <label for="genre">Select a Genre:</label>
+        <select name="genre" id="genre">
+            {% for genre in genres %}
+                <option value="{{ genre }}">{{ genre }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Visualizations</h2>
+
+    <!-- Form to Display Popular Genres Visualization -->
+    <form action="/fig/genre-popularity" method="get" target="visualization-frame" style="text-align: center;">
+        <button type="submit">Check Out Popular Genres</button>
+    </form>
+
+    <!-- Visualization of genre vs popularity-->
+    <div class="visualization-container">
+        <iframe name="visualization-frame"></iframe>
+    </div>
+</body>
+</html>
